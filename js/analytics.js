@@ -1,6 +1,6 @@
 checkAuth();
 
-// Load Chart.js data
+
 function loadAnalytics() {
     const studyLog = loadUserData('studyLog') || [];
     const assignments = loadUserData('assignments') || [];
@@ -13,7 +13,6 @@ function loadAnalytics() {
     updateSummary(studyLog, assignments);
 }
 
-// Study Time Chart (Last 7 days)
 function createStudyTimeChart(studyLog) {
     const last7Days = [];
     const studyData = [];
@@ -26,7 +25,7 @@ function createStudyTimeChart(studyLog) {
         
         const dayLogs = studyLog.filter(log => new Date(log.date).toDateString() === dateStr);
         const totalMinutes = dayLogs.reduce((sum, log) => sum + log.duration, 0);
-        studyData.push(totalMinutes / 60); // Convert to hours
+        studyData.push(totalMinutes / 60); 
     }
     
     const ctx = document.getElementById('studyTimeChart').getContext('2d');
@@ -54,7 +53,7 @@ function createStudyTimeChart(studyLog) {
     });
 }
 
-// Assignment Completion Rate
+
 function createCompletionChart(assignments) {
     const completed = assignments.filter(a => a.completed).length;
     const pending = assignments.filter(a => !a.completed).length;
@@ -79,7 +78,7 @@ function createCompletionChart(assignments) {
     });
 }
 
-// GPA Trend
+
 function createGPAChart(gpaHistory) {
     const labels = gpaHistory.map((_, i) => `Entry ${i + 1}`);
     const data = gpaHistory.map(entry => entry.gpa);
@@ -111,7 +110,7 @@ function createGPAChart(gpaHistory) {
     });
 }
 
-// Priority Distribution
+
 function createPriorityChart(assignments) {
     const high = assignments.filter(a => a.priority === 'high' && !a.completed).length;
     const medium = assignments.filter(a => a.priority === 'medium' && !a.completed).length;
@@ -138,24 +137,22 @@ function createPriorityChart(assignments) {
     });
 }
 
-// Update summary cards
+
 function updateSummary(studyLog, assignments) {
-    // Total study hours this week
+
     const weekStart = new Date();
     weekStart.setDate(weekStart.getDate() - 7);
     const weekLogs = studyLog.filter(log => new Date(log.date) >= weekStart);
     const totalMinutes = weekLogs.reduce((sum, log) => sum + log.duration, 0);
     document.getElementById('total-hours').textContent = Math.floor(totalMinutes / 60);
-    
-    // Completed assignments
+
     const completed = assignments.filter(a => a.completed).length;
     document.getElementById('completed-count').textContent = completed;
     
-    // Average session
+ 
     const avgSession = weekLogs.length > 0 ? Math.floor(totalMinutes / weekLogs.length) : 0;
     document.getElementById('avg-session').textContent = avgSession + ' min';
-    
-    // Productivity score
+ 
     const productivity = assignments.length > 0 
         ? Math.round((completed / assignments.length) * 100) 
         : 0;

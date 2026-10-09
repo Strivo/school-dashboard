@@ -1,6 +1,6 @@
 checkAuth();
 
-// Pre-loaded Quiz Database
+
 const quizDatabase = {
     mathematics: {
         title: "Mathematics Quiz",
@@ -314,12 +314,11 @@ let quizTaking = {
     quizKey: ''
 };
 
-// Initialize
 function init() {
     displayAvailableQuizzes();
 }
 
-// Display available quizzes
+
 function displayAvailableQuizzes() {
     const container = document.getElementById('quiz-subjects-grid');
     
@@ -342,7 +341,7 @@ function displayAvailableQuizzes() {
     }).join('');
 }
 
-// Start taking quiz
+
 function startQuiz(quizKey) {
     quizTaking.quiz = JSON.parse(JSON.stringify(quizDatabase[quizKey]));
     quizTaking.quizKey = quizKey;
@@ -360,7 +359,7 @@ function startQuiz(quizKey) {
     displayQuestion();
 }
 
-// Display current question
+
 function displayQuestion() {
     const question = quizTaking.quiz.questions[quizTaking.currentQuestionIndex];
     const questionNum = quizTaking.currentQuestionIndex + 1;
@@ -369,11 +368,10 @@ function displayQuestion() {
     document.getElementById('current-question-num').textContent = questionNum;
     document.getElementById('question-display').textContent = question.question;
     
-    // Update progress bar
     const progress = (questionNum / totalQuestions) * 100;
     document.getElementById('progress-fill').style.width = progress + '%';
     
-    // Display options
+    
     const optionsContainer = document.getElementById('options-display');
     optionsContainer.innerHTML = question.options.map((option, index) => {
         const isSelected = quizTaking.userAnswers[quizTaking.currentQuestionIndex] === index;
@@ -385,7 +383,7 @@ function displayQuestion() {
         `;
     }).join('');
     
-    // Update navigation buttons
+
     document.getElementById('prev-btn').disabled = quizTaking.currentQuestionIndex === 0;
     
     if (quizTaking.currentQuestionIndex === totalQuestions - 1) {
@@ -396,11 +394,10 @@ function displayQuestion() {
         document.getElementById('submit-btn').style.display = 'none';
     }
     
-    // Start timer for question
+   
     startQuestionTimer();
 }
 
-// Start question timer
 function startQuestionTimer() {
     clearInterval(quizTaking.questionTimer);
     quizTaking.timeRemaining = quizTaking.quiz.timePerQuestion;
@@ -413,7 +410,7 @@ function startQuestionTimer() {
         
         if (quizTaking.timeRemaining <= 0) {
             clearInterval(quizTaking.questionTimer);
-            // Auto-advance to next question
+          
             if (quizTaking.currentQuestionIndex < quizTaking.quiz.questions.length - 1) {
                 nextQuestion();
             } else {
@@ -423,12 +420,11 @@ function startQuestionTimer() {
     }, 1000);
 }
 
-// Update timer display
 function updateTimerDisplay() {
     const timerElement = document.getElementById('quiz-timer-display');
     timerElement.textContent = quizTaking.timeRemaining + 's';
     
-    // Change color based on time remaining
+    
     if (quizTaking.timeRemaining <= 10) {
         timerElement.style.color = '#EF4444';
     } else if (quizTaking.timeRemaining <= 20) {
@@ -438,13 +434,12 @@ function updateTimerDisplay() {
     }
 }
 
-// Select answer
 function selectAnswer(optionIndex) {
     quizTaking.userAnswers[quizTaking.currentQuestionIndex] = optionIndex;
     displayQuestion();
 }
 
-// Next question
+
 function nextQuestion() {
     if (quizTaking.currentQuestionIndex < quizTaking.quiz.questions.length - 1) {
         quizTaking.currentQuestionIndex++;
@@ -452,7 +447,7 @@ function nextQuestion() {
     }
 }
 
-// Previous question
+
 function previousQuestion() {
     if (quizTaking.currentQuestionIndex > 0) {
         quizTaking.currentQuestionIndex--;
@@ -460,11 +455,11 @@ function previousQuestion() {
     }
 }
 
-// Submit quiz
+
 function submitQuiz() {
     clearInterval(quizTaking.questionTimer);
     
-    // Calculate score
+    
     let correctCount = 0;
     quizTaking.quiz.questions.forEach((question, index) => {
         if (quizTaking.userAnswers[index] === question.correctAnswer) {
@@ -475,7 +470,7 @@ function submitQuiz() {
     const totalQuestions = quizTaking.quiz.questions.length;
     const scorePercent = Math.round((correctCount / totalQuestions) * 100);
     
-    // Save result
+  
     const quizResults = loadUserData('quizResults') || [];
     quizResults.push({
         quizTitle: quizTaking.quiz.title,
@@ -486,12 +481,11 @@ function submitQuiz() {
         date: new Date().toISOString()
     });
     saveUserData('quizResults', quizResults);
-    
-    // Display results
+   
     displayResults(correctCount, totalQuestions, scorePercent);
 }
 
-// Display results
+
 function displayResults(correctCount, totalQuestions, scorePercent) {
     document.getElementById('quiz-taking').style.display = 'none';
     document.getElementById('quiz-results').style.display = 'block';
@@ -500,7 +494,7 @@ function displayResults(correctCount, totalQuestions, scorePercent) {
     document.getElementById('correct-answers').textContent = correctCount;
     document.getElementById('total-questions-result').textContent = totalQuestions;
     
-    // Set grade message
+ 
     const gradeMessage = document.getElementById('grade-message');
     if (scorePercent >= 90) {
         gradeMessage.textContent = "Excellent! Outstanding Performance!";
@@ -516,7 +510,7 @@ function displayResults(correctCount, totalQuestions, scorePercent) {
         gradeMessage.style.color = "#EF4444";
     }
     
-    // Display answer review
+
     const reviewContainer = document.getElementById('answer-review');
     reviewContainer.innerHTML = quizTaking.quiz.questions.map((question, index) => {
         const userAnswer = quizTaking.userAnswers[index];
@@ -555,12 +549,12 @@ function displayResults(correctCount, totalQuestions, scorePercent) {
     }).join('');
 }
 
-// Retake quiz
+
 function retakeQuiz() {
     startQuiz(quizTaking.quizKey);
 }
 
-// Back to quiz list
+
 function backToQuizList() {
     document.getElementById('quiz-selection').style.display = 'block';
     document.getElementById('quiz-taking').style.display = 'none';

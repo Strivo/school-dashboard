@@ -6,16 +6,15 @@ document.getElementById('register-form').addEventListener('submit', function(e) 
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     
-    // Get existing users
+  
     let users = JSON.parse(localStorage.getItem('users')) || [];
     
-    // Check if username exists
+    
     if (users.find(u => u.username === username)) {
         alert('Username already exists!');
         return;
     }
     
-    // Add new user
     const newUser = {
         fullname,
         username,

@@ -3,7 +3,7 @@ checkAuth();
 let assignments = loadUserData('assignments') || [];
 let currentFilter = 'all';
 
-// Add assignment
+
 document.getElementById('assignment-form').addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -24,7 +24,6 @@ document.getElementById('assignment-form').addEventListener('submit', function(e
     displayAssignments();
 });
 
-// Display assignments
 function displayAssignments() {
     const container = document.getElementById('assignments-container');
     
@@ -65,7 +64,7 @@ function displayAssignments() {
         }).join('');
 }
 
-// Toggle completion
+
 function toggleComplete(id) {
     const assignment = assignments.find(a => a.id === id);
     if (assignment) {
@@ -75,7 +74,6 @@ function toggleComplete(id) {
     }
 }
 
-// Delete assignment
 function deleteAssignment(id) {
     if (confirm('Are you sure you want to delete this assignment?')) {
         assignments = assignments.filter(a => a.id !== id);
@@ -84,7 +82,7 @@ function deleteAssignment(id) {
     }
 }
 
-// Filter buttons
+
 document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', function() {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));

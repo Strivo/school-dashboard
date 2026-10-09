@@ -1,8 +1,8 @@
 checkAuth();
 
-// Load dashboard data
+
 function loadDashboard() {
-    // Load assignments
+    
     const assignments = loadUserData('assignments') || [];
     const activeAssignments = assignments.filter(a => !a.completed).length;
     const completedTasks = assignments.filter(a => a.completed).length;
@@ -10,12 +10,11 @@ function loadDashboard() {
     document.getElementById('active-assignments').textContent = activeAssignments;
     document.getElementById('completed-tasks').textContent = completedTasks;
     
-    // Load GPA
     const gpaHistory = loadUserData('gpaHistory') || [];
     const latestGPA = gpaHistory.length > 0 ? gpaHistory[gpaHistory.length - 1].gpa : 0;
     document.getElementById('current-gpa').textContent = latestGPA.toFixed(2);
     
-    // Load study time
+    
     const studyLog = loadUserData('studyLog') || [];
     const today = new Date().toDateString();
     const todayLogs = studyLog.filter(log => new Date(log.date).toDateString() === today);
@@ -23,7 +22,7 @@ function loadDashboard() {
     const hours = Math.floor(totalMinutes / 60);
     document.getElementById('study-time').textContent = `${hours}h`;
     
-    // Display upcoming deadlines
+    
     displayUpcomingDeadlines(assignments);
 }
 

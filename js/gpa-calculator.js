@@ -2,7 +2,7 @@ checkAuth();
 
 let courses = [];
 
-// Add course input
+
 function addCourse() {
     const courseId = Date.now();
     const courseDiv = document.createElement('div');
@@ -31,12 +31,12 @@ function addCourse() {
     document.getElementById('courses-container').appendChild(courseDiv);
 }
 
-// Remove course
+
 function removeCourse(id) {
     document.getElementById(`course-${id}`).remove();
 }
 
-// Calculate GPA
+
 function calculateGPA() {
     const courseInputs = document.querySelectorAll('.course-input');
     
@@ -69,17 +69,14 @@ function calculateGPA() {
     const gpa = totalPoints / totalCredits;
     document.getElementById('gpa-result').textContent = gpa.toFixed(2);
     
-    // Display breakdown
     const breakdownDiv = document.getElementById('grade-breakdown');
     breakdownDiv.innerHTML = '<h4>Course Breakdown</h4>' + breakdown.map(c => 
         `<p>${c.name}: ${c.grade.toFixed(1)} (${c.credits} credits)</p>`
     ).join('');
     
-    // Store current calculation
     courses = breakdown;
 }
 
-// Save GPA to history
 function saveGPA() {
     const gpa = parseFloat(document.getElementById('gpa-result').textContent);
     
@@ -100,7 +97,7 @@ function saveGPA() {
     displayGPAHistory();
 }
 
-// Display GPA history
+
 function displayGPAHistory() {
     const gpaHistory = loadUserData('gpaHistory') || [];
     const container = document.getElementById('gpa-history-list');
@@ -118,7 +115,7 @@ function displayGPAHistory() {
     `).join('');
 }
 
-// Initialize with 3 course inputs
+
 addCourse();
 addCourse();
 addCourse();

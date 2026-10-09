@@ -2,7 +2,7 @@ checkAuth();
 
 let timer;
 let isRunning = false;
-let timeLeft = 25 * 60; // 25 minutes in seconds
+let timeLeft = 25 * 60; 
 let currentMode = 'work';
 let sessionsToday = 0;
 
@@ -12,7 +12,7 @@ const settings = {
     longBreak: 15
 };
 
-// Load settings
+
 function loadSettings() {
     const saved = loadUserData('pomodoroSettings');
     if (saved) {
@@ -29,7 +29,7 @@ function loadSettings() {
     updateDisplay();
 }
 
-// Save settings
+
 function saveSettings() {
     settings.work = parseInt(document.getElementById('work-duration').value);
     settings.break = parseInt(document.getElementById('break-duration').value);
@@ -40,7 +40,7 @@ function saveSettings() {
     resetTimer();
 }
 
-// Update timer display
+
 function updateDisplay() {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
@@ -48,7 +48,7 @@ function updateDisplay() {
         `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
-// Start timer
+
 function startTimer() {
     if (!isRunning) {
         isRunning = true;
@@ -69,7 +69,7 @@ function startTimer() {
     }
 }
 
-// Pause timer
+
 function pauseTimer() {
     if (isRunning) {
         clearInterval(timer);
@@ -80,7 +80,7 @@ function pauseTimer() {
     }
 }
 
-// Reset timer
+
 function resetTimer() {
     clearInterval(timer);
     isRunning = false;
@@ -99,11 +99,11 @@ function resetTimer() {
     document.getElementById('timer-status').textContent = 'Ready to focus?';
 }
 
-// Complete session
+
 function completeSession() {
     sessionsToday++;
     
-    // Log the session
+
     const studyLog = loadUserData('studyLog') || [];
     studyLog.push({
         date: new Date().toISOString(),
@@ -118,7 +118,7 @@ function completeSession() {
     resetTimer();
 }
 
-// Mode buttons
+
 document.querySelectorAll('.mode-btn').forEach(btn => {
     btn.addEventListener('click', function() {
         document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
@@ -129,7 +129,7 @@ document.querySelectorAll('.mode-btn').forEach(btn => {
     });
 });
 
-// Update statistics
+
 function updateStats() {
     const studyLog = loadUserData('studyLog') || [];
     const today = new Date().toDateString();
@@ -143,7 +143,6 @@ function updateStats() {
     document.getElementById('total-time').textContent = `${hours}h ${minutes}m`;
 }
 
-// Display study log
 function displayStudyLog() {
     const studyLog = loadUserData('studyLog') || [];
     const today = new Date().toDateString();

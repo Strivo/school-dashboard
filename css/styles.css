@@ -5,7 +5,7 @@
 }
 
 :root {
-    /* PINK THEME - Active */
+  
     --primary-color: #EC4899;
     --primary-dark: #DB2777;
     --primary-light: #F472B6;
@@ -21,22 +21,9 @@
     --sidebar-bg: #831843;
     --sidebar-hover: #9F1239;
     
-    /* LIGHT GREEN THEME - Uncomment below to use
-    --primary-color: #22C55E;
-    --primary-dark: #16A34A;
-    --primary-light: #4ADE80;
-    --secondary-color: #14B8A6;
-    --success-color: #10B981;
-    --warning-color: #F59E0B;
-    --danger-color: #EF4444;
-    --bg-light: #F0FDF4;
-    --bg-white: #FFFFFF;
-    --text-dark: #1F2937;
-    --text-gray: #6B7280;
-    --border-color: #DCFCE7;
-    --sidebar-bg: #14532D;
-    --sidebar-hover: #166534;
-    */
+   
+  
+   
 }
 
 body {
@@ -46,14 +33,14 @@ body {
     color: var(--text-dark);
 }
 
-/* Login Page Styles */
+
 .login-page {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);
-    /* For Green Theme: background: linear-gradient(135deg, #22C55E 0%, #14B8A6 100%); */
+    
 }
 
 .login-container {
@@ -154,7 +141,7 @@ body {
     text-decoration: underline;
 }
 
-/* Dashboard Layout */
+
 .sidebar {
     position: fixed;
     left: 0;
@@ -263,7 +250,7 @@ body {
     color: var(--primary-color);
 }
 
-/* Dashboard Cards */
+
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -361,7 +348,7 @@ body {
     font-size: 0.875em;
 }
 
-/* Assignment Styles */
+
 .assignment-input-section {
     background: var(--bg-white);
     padding: 28px;
@@ -522,7 +509,6 @@ body {
     background: #DC2626;
 }
 
-/* GPA Calculator */
 .gpa-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -976,7 +962,7 @@ body {
     }
 }
 
-/* Quiz Platform Styles */
+
 .page-header p {
     color: var(--text-gray);
     margin-top: 8px;
@@ -1145,7 +1131,7 @@ body {
     padding: 40px 20px;
 }
 
-/* Question Builder */
+
 .question-builder-container {
     display: flex;
     flex-direction: column;
@@ -1422,7 +1408,7 @@ body {
     flex: 1;
 }
 
-/* Quiz Results */
+
 .quiz-results-container {
     max-width: 900px;
     margin: 0 auto;
