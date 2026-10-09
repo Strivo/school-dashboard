@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - Student Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="logo">
+            <h2><i class="fas fa-graduation-cap"></i> Portal</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="assignments.html"><i class="fas fa-tasks"></i> Assignments</a></li>
+            <li><a href="gpa-calculator.html"><i class="fas fa-calculator"></i> GPA Calculator</a></li>
+            <li><a href="pomodoro.html"><i class="fas fa-clock"></i> Study Timer</a></li>
+            <li><a href="quiz.html"><i class="fas fa-brain"></i> Quiz & Tests</a></li>
+            <li><a href="analytics.html" class="active"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+        </ul>
+        <div class="user-section">
+            <p id="user-name">Welcome, Student</p>
+            <button onclick="logout()" class="btn-logout">Logout</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="page-header">
+            <h1><i class="fas fa-chart-bar"></i> Analytics & Reports</h1>
+        </header>
+
+        <div class="analytics-grid">
+            <div class="chart-container">
+                <h3>Study Time This Week</h3>
+                <canvas id="studyTimeChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3>Assignment Completion Rate</h3>
+                <canvas id="completionChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3>GPA Trend</h3>
+                <canvas id="gpaChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3>Priority Distribution</h3>
+                <canvas id="priorityChart"></canvas>
+            </div>
+        </div>
+
+        <div class="stats-summary">
+            <h2>Weekly Summary</h2>
+            <div class="summary-cards">
+                <div class="summary-card">
+                    <h4>Total Study Hours</h4>
+                    <p id="total-hours">0</p>
+                </div>
+                <div class="summary-card">
+                    <h4>Assignments Completed</h4>
+                    <p id="completed-count">0</p>
+                </div>
+                <div class="summary-card">
+                    <h4>Average Session</h4>
+                    <p id="avg-session">0 min</p>
+                </div>
+                <div class="summary-card">
+                    <h4>Productivity Score</h4>
+                    <p id="productivity-score">0%</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/utils.js"></script>
+    <script src="js/analytics.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments - Student Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="logo">
+            <h2><i class="fas fa-graduation-cap"></i> Portal</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="assignments.html" class="active"><i class="fas fa-tasks"></i> Assignments</a></li>
+            <li><a href="gpa-calculator.html"><i class="fas fa-calculator"></i> GPA Calculator</a></li>
+            <li><a href="pomodoro.html"><i class="fas fa-clock"></i> Study Timer</a></li>
+            <li><a href="quiz.html"><i class="fas fa-brain"></i> Quiz & Tests</a></li>
+            <li><a href="analytics.html"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+        </ul>
+        <div class="user-section">
+            <p id="user-name">Welcome, Student</p>
+            <button onclick="logout()" class="btn-logout">Logout</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="page-header">
+            <h1><i class="fas fa-tasks"></i> Assignment Tracker</h1>
+        </header>
+
+        <div class="assignment-input-section">
+            <h2>Add New Assignment</h2>
+            <form id="assignment-form">
+                <input type="text" id="task-name" placeholder="Assignment name" required>
+                <input type="text" id="subject" placeholder="Subject/Course" required>
+                <input type="date" id="deadline" required>
+                <select id="priority" required>
+                    <option value="">Select Priority</option>
+                    <option value="high">High Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="low">Low Priority</option>
+                </select>
+                <button type="submit" class="btn-primary">Add Assignment</button>
+            </form>
+        </div>
+
+        <div class="filter-section">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="high">High Priority</button>
+            <button class="filter-btn" data-filter="medium">Medium Priority</button>
+            <button class="filter-btn" data-filter="low">Low Priority</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
+        <div id="assignments-container" class="assignments-list"></div>
+    </main>
+
+    <script src="js/utils.js"></script>
+    <script src="js/assignments.js"></script>
+</body>
+</html>

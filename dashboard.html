@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Student Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="logo">
+            <h2><i class="fas fa-graduation-cap"></i> Portal</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html" class="active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="assignments.html"><i class="fas fa-tasks"></i> Assignments</a></li>
+            <li><a href="gpa-calculator.html"><i class="fas fa-calculator"></i> GPA Calculator</a></li>
+            <li><a href="pomodoro.html"><i class="fas fa-clock"></i> Study Timer</a></li>
+            <li><a href="quiz.html"><i class="fas fa-brain"></i> Quiz & Tests</a></li>
+            <li><a href="analytics.html"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+        </ul>
+        <div class="user-section">
+            <p id="user-name">Welcome, Student</p>
+            <button onclick="logout()" class="btn-logout">Logout</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="page-header">
+            <h1>Dashboard Overview</h1>
+        </header>
+
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <h3><i class="fas fa-file-alt"></i> Active Assignments</h3>
+                <p class="stat-number" id="active-assignments">0</p>
+            </div>
+            <div class="stat-card">
+                <h3><i class="fas fa-check-circle"></i> Completed Tasks</h3>
+                <p class="stat-number" id="completed-tasks">0</p>
+            </div>
+            <div class="stat-card">
+                <h3><i class="fas fa-graduation-cap"></i> Current GPA</h3>
+                <p class="stat-number" id="current-gpa">0.0</p>
+            </div>
+            <div class="stat-card">
+                <h3><i class="fas fa-hourglass-half"></i> Study Time Today</h3>
+                <p class="stat-number" id="study-time">0h</p>
+            </div>
+        </div>
+
+        <div class="quick-actions">
+            <h2>Quick Actions</h2>
+            <div class="action-cards">
+                <a href="assignments.html" class="action-card">
+                    <span class="icon"><i class="fas fa-plus-circle"></i></span>
+                    <h3>Add Assignment</h3>
+                    <p>Track new homework</p>
+                </a>
+                <a href="pomodoro.html" class="action-card">
+                    <span class="icon"><i class="fas fa-play-circle"></i></span>
+                    <h3>Start Study Session</h3>
+                    <p>Begin Pomodoro timer</p>
+                </a>
+                <a href="gpa-calculator.html" class="action-card">
+                    <span class="icon"><i class="fas fa-calculator"></i></span>
+                    <h3>Calculate GPA</h3>
+                    <p>Check your grades</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="recent-activity">
+            <h2>Upcoming Deadlines</h2>
+            <div id="upcoming-deadlines"></div>
+        </div>
+    </main>
+
+    <script src="js/utils.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

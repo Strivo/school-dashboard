@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer - Student Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="logo">
+            <h2><i class="fas fa-graduation-cap"></i> Portal</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="assignments.html"><i class="fas fa-tasks"></i> Assignments</a></li>
+            <li><a href="gpa-calculator.html"><i class="fas fa-calculator"></i> GPA Calculator</a></li>
+            <li><a href="pomodoro.html" class="active"><i class="fas fa-clock"></i> Study Timer</a></li>
+            <li><a href="quiz.html"><i class="fas fa-brain"></i> Quiz & Tests</a></li>
+            <li><a href="analytics.html"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+        </ul>
+        <div class="user-section">
+            <p id="user-name">Welcome, Student</p>
+            <button onclick="logout()" class="btn-logout">Logout</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="page-header">
+            <h1><i class="fas fa-clock"></i> Pomodoro Study Timer</h1>
+        </header>
+
+        <div class="pomodoro-container">
+            <div class="timer-card">
+                <div class="timer-mode">
+                    <button class="mode-btn active" data-mode="work">Work</button>
+                    <button class="mode-btn" data-mode="break">Short Break</button>
+                    <button class="mode-btn" data-mode="longBreak">Long Break</button>
+                </div>
+
+                <div class="timer-display-large">
+                    <h2 id="timer-display">25:00</h2>
+                    <p id="timer-status">Ready to focus?</p>
+                </div>
+
+                <div class="timer-controls-large">
+                    <button id="start-btn" onclick="startTimer()" class="btn-timer btn-start">Start</button>
+                    <button id="pause-btn" onclick="pauseTimer()" class="btn-timer btn-pause" disabled>Pause</button>
+                    <button id="reset-btn" onclick="resetTimer()" class="btn-timer btn-reset">Reset</button>
+                </div>
+
+                <div class="pomodoro-stats">
+                    <div class="stat">
+                        <p class="stat-label">Sessions Today</p>
+                        <p class="stat-value" id="sessions-count">0</p>
+                    </div>
+                    <div class="stat">
+                        <p class="stat-label">Total Time</p>
+                        <p class="stat-value" id="total-time">0h 0m</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timer-settings">
+                <h3>Timer Settings</h3>
+                <div class="setting-item">
+                    <label>Work Duration (minutes)</label>
+                    <input type="number" id="work-duration" value="25" min="1" max="60">
+                </div>
+                <div class="setting-item">
+                    <label>Short Break (minutes)</label>
+                    <input type="number" id="break-duration" value="5" min="1" max="30">
+                </div>
+                <div class="setting-item">
+                    <label>Long Break (minutes)</label>
+                    <input type="number" id="long-break-duration" value="15" min="1" max="60">
+                </div>
+                <button onclick="saveSettings()" class="btn-secondary">Save Settings</button>
+            </div>
+        </div>
+
+        <div class="study-log">
+            <h2>Today's Study Log</h2>
+            <div id="study-log-container"></div>
+        </div>
+    </main>
+
+    <script src="js/utils.js"></script>
+    <script src="js/pomodoro.js"></script>
+</body>
+</html>
